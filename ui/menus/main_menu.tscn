@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://ui/menus/main_menu.gd" id="1_script"]
+[ext_resource type="Theme" path="res://ui/menus/menu_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://stages/bar/bar.tscn" id="3_bar"]
+[ext_resource type="PackedScene" path="res://ui/menus/update_banner.tscn" id="4_banner"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="Bar" parent="." instance=ExtResource("3_bar")]
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.7, 1)
+theme_override_font_sizes/font_size = 40
+text = "UMA"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Last one standing wins"
+horizontal_alignment = 1
+
+[node name="UpdateBanner" parent="Center/Panel/Margin/VBox" instance=ExtResource("4_banner")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play online"
+
+[node name="PracticeButton" type="Button" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Practice"
+
+[node name="SettingsButton" type="Button" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"

@@ -1,0 +1,128 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://ui/menus/settings_menu.gd" id="1_script"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.18, 0.08, 0.08, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(1040, 0)
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Columns" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="General" type="VBoxContainer" parent="Center/Panel/Margin/VBox/Columns"]
+layout_mode = 2
+custom_minimum_size = Vector2(360, 0)
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Center/Panel/Margin/VBox/Columns/General"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.7, 0.65, 1)
+theme_override_font_sizes/font_size = 18
+text = "Name"
+
+[node name="NameEdit" type="LineEdit" parent="Center/Panel/Margin/VBox/Columns/General"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Your name"
+max_length = 16
+
+[node name="ServerLabel" type="Label" parent="Center/Panel/Margin/VBox/Columns/General"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.7, 0.65, 1)
+theme_override_font_sizes/font_size = 18
+text = "Server address"
+
+[node name="ServerEdit" type="LineEdit" parent="Center/Panel/Margin/VBox/Columns/General"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FullscreenCheck" type="CheckButton" parent="Center/Panel/Margin/VBox/Columns/General"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Spacer" type="Control" parent="Center/Panel/Margin/VBox/Columns/General"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResetControlsButton" type="Button" parent="Center/Panel/Margin/VBox/Columns/General"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset controls"
+
+[node name="BackButton" type="Button" parent="Center/Panel/Margin/VBox/Columns/General"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
+
+[node name="ControlsBox" type="VBoxContainer" parent="Center/Panel/Margin/VBox/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="ControlsLabel" type="Label" parent="Center/Panel/Margin/VBox/Columns/ControlsBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.7, 0.65, 1)
+theme_override_font_sizes/font_size = 18
+text = "Controls: pick one, then press the new key or button"
+
+[node name="Scroll" type="ScrollContainer" parent="Center/Panel/Margin/VBox/Columns/ControlsBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 540)
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="Bindings" type="GridContainer" parent="Center/Panel/Margin/VBox/Columns/ControlsBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 6
+columns = 3
+

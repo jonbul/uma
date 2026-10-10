@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://stages/stage.gd" id="1_stage"]
+[ext_resource type="Script" path="res://stages/bar/bar_room.gd" id="2_room"]
+[ext_resource type="PackedScene" path="res://stages/bar/stool.tscn" id="3_stool"]
+[ext_resource type="PackedScene" path="res://stages/bar/table.tscn" id="4_table"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
+size = Vector2(1280, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical"]
+size = Vector2(10, 460)
+
+[node name="Bar" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_stage")
+
+[node name="Room" type="Node2D" parent="."]
+z_index = -10
+script = ExtResource("2_room")
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(640, 275)
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Bottom" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(640, 725)
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Left" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(-5, 500)
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="Right" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(1285, 500)
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="Stool1" parent="." instance=ExtResource("3_stool")]
+position = Vector2(250, 300)
+
+[node name="Stool2" parent="." instance=ExtResource("3_stool")]
+position = Vector2(370, 300)
+
+[node name="Stool3" parent="." instance=ExtResource("3_stool")]
+position = Vector2(490, 300)
+
+[node name="Stool4" parent="." instance=ExtResource("3_stool")]
+position = Vector2(610, 300)
+
+[node name="Stool5" parent="." instance=ExtResource("3_stool")]
+position = Vector2(730, 300)
+
+[node name="Stool6" parent="." instance=ExtResource("3_stool")]
+position = Vector2(850, 300)
+
+[node name="Table1" parent="." instance=ExtResource("4_table")]
+position = Vector2(140, 560)
+
+[node name="Table2" parent="." instance=ExtResource("4_table")]
+position = Vector2(1140, 560)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="P1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(320, 480)
+
+[node name="P2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(960, 480)
+
+[node name="P3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(320, 620)
+
+[node name="P4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(960, 620)
+
+[node name="P5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(320, 340)
+
+[node name="P6" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(960, 340)
+
+[node name="P7" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(520, 560)
+
+[node name="P8" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(760, 560)
+
+[node name="P9" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(520, 400)
+
+[node name="P10" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(760, 400)

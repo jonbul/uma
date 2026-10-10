@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/menus/update_banner.gd" id="1_banner"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_banner"]
+bg_color = Color(0.45, 0.3, 0.05, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[node name="UpdateBanner" type="PanelContainer"]
+visible = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_banner")
+script = ExtResource("1_banner")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Message" type="Label" parent="HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+[node name="UpdateButton" type="Button" parent="HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "Update"

@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://fighters/common/fighter.gd" id="1_fighter"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_feet"]
+size = Vector2(30, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurtbox"]
+size = Vector2(36, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(30, 18)
+
+[node name="Fighter" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("1_fighter")
+
+[node name="Feet" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_feet")
+
+[node name="Shadow" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.35)
+polygon = PackedVector2Array(18, 0, 15.6, 3, 9, 5.2, 0, 6, -9, 5.2, -15.6, 3, -18, 0, -15.6, -3, -9, -5.2, 0, -6, 9, -5.2, 15.6, -3)
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Placeholder" type="ColorRect" parent="Body"]
+offset_left = -18.0
+offset_top = -84.0
+offset_right = 18.0
+mouse_filter = 2
+color = Color(0.85, 0.55, 0.3, 1)
+
+[node name="FacingMarker" type="ColorRect" parent="Body"]
+offset_left = 9.0
+offset_top = -75.0
+offset_right = 21.0
+offset_bottom = -66.0
+mouse_filter = 2
+color = Color(0.2, 0.1, 0.05, 1)
+
+[node name="Hurtbox" type="Area2D" parent="Body"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hurtbox"]
+position = Vector2(0, -42)
+shape = SubResource("RectangleShape2D_hurtbox")
+
+[node name="Hitbox" type="Area2D" parent="Body"]
+collision_layer = 4
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hitbox"]
+position = Vector2(33, -54)
+shape = SubResource("RectangleShape2D_hitbox")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://game/match.gd" id="1_match"]
+[ext_resource type="PackedScene" path="res://ui/hud/results_panel.tscn" id="2_results"]
+[ext_resource type="PackedScene" path="res://ui/menus/pause_menu.tscn" id="3_pause"]
+
+[node name="Match" type="Node2D"]
+script = ExtResource("1_match")
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Fighters" type="Node2D" parent="World"]
+y_sort_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Announcer" type="Label" parent="UI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 120.0
+offset_bottom = 240.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Results" parent="UI" instance=ExtResource("2_results")]
+offset_top = 0.0
+offset_bottom = 80.0
+
+[node name="HudSafeArea" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PauseButton" type="Button" parent="UI/HudSafeArea"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 68.0
+grow_horizontal = 0
+focus_mode = 0
+text = "II"
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("3_pause")]
